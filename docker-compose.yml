@@ -5,7 +5,7 @@ services:
     env_file:
       - .env
     build: vpn
-    container_name: JaegerVPN
+    container_name: VPN
     environment:
       OC_SERVER: ${OC_SERVER}
       OC_USER: ${OC_USER}
