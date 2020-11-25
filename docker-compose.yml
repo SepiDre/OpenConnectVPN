@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  vpn:
+    env_file:
+      - .env
+    build: vpn
+    container_name: JaegerVPN
+    environment:
+      OC_SERVER: ${OC_SERVER}
+      OC_USER: ${OC_USER}
+      OC_PASSWORD: ${OC_PASSWORD}
+      OC_FINGERPRINT: ${OC_FINGERPRINT}
+      REMOTE_RPD: ${REMOTE_RPD}
+      REMOTE_DEV: ${REMOTE_DEV}
+      REMOTE_DEVMON: ${REMOTE_DEVMON}
+      REMOTE_PRDMON: ${REMOTE_PRDMON}
+      REMOTE_TSTMON: ${REMOTE_TSTMON}
+      REMOTE_DEVCLIENT: ${REMOTE_DEVCLIENT}
+      REMOTE_TSTCLIENT: ${REMOTE_TSTCLIENT}
+      REMOTE_PRDCLIENT: ${REMOTE_PRDCLIENT}
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/ppp
+    restart: unless-stopped
+    security_opt:
+      - label:disable      
+    ports:
+      - "811:1111"
+      - "812:1112"
+      - "813:1113"
+      - "814:1114"
+      - "815:1115"
+      - "816:1116"
+      - "817:1117"
+      - "818:1118"
